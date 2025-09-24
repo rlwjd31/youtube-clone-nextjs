@@ -1,5 +1,3 @@
-import { sleep } from "@/lib/sleep";
-
 type Props = {
   params: {
     id: string;
@@ -8,8 +6,6 @@ type Props = {
 };
 
 const page = async (props: Props) => {
-  console.log("channel id page");
-
   return <div>Channel Id</div>;
 };
 export default page;

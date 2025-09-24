@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { sleep } from "@/lib/sleep";
+import Sidebar from "@/components/elements/Sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,12 +30,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // console.log('sleep before rootlayout');
-  // await sleep(3000);
-  // console.log('sleep after rootlayout');
-
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -47,7 +41,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Sidebar>{children}</Sidebar>
         </ThemeProvider>
       </body>
     </html>
