@@ -3,13 +3,14 @@
 import PagePadding from "@/components/PagePadding";
 import UserIcon from "@/components/UserIcon";
 import Image from "next/image";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { FaChromecast } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import Logo from "@/components/elements/Logo";
 import Navigator from "@/components/elements/Navigator";
+import { cn } from "@/lib/utils";
 
 function HeaderDrawer({ children }: { children: ReactNode }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -34,8 +35,27 @@ function HeaderDrawer({ children }: { children: ReactNode }) {
 }
 
 export default function Header({ children }: { children: ReactNode }) {
+  // Track scroll via console for now; add state when needed
+  const [isScrolling, setIsScrolling] = useState(false);
+  const headRef = useRef<HTMLHeadElement | null>(null);
+
+  useEffect(() => {
+    const element = headRef.current;
+    if (!element) return;
+
+    const handleScroll = () => {
+      const scrollValue = element.scrollTop;
+      console.log("scrollValue", scrollValue);
+      setIsScrolling(scrollValue > 30);
+    };
+
+    element.addEventListener("scroll", handleScroll);
+    return () => {
+      element.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <header className="relative overflow-y-auto w-full h-full">
+    <header ref={headRef} className="relative overflow-y-auto w-full h-full">
       <section className="absolute top-0 w-full">
         <div className="relative h-[400px] w-full">
           <Image
@@ -47,10 +67,15 @@ export default function Header({ children }: { children: ReactNode }) {
           <div className="w-full h-full bg-gradient-to-t from-background absolute top-0" />
         </div>
       </section>
-      <section className="sticky top-0">
+      <section
+        className={cn(
+          "sticky top-0 left-0 z-10 transition-all duration-700",
+          isScrolling && "bg-black/80"
+        )}
+      >
         <PagePadding>
           <div className="flex justify-between items-center">
-            <article className="items-center h-12 min-w-[480px] hidden lg:flex bg-black/15 rounded-2xl px-4 gap-4">
+            <article className="border border-neutral-500 items-center h-12 min-w-[480px] hidden lg:flex bg-black/15 rounded-2xl px-4 gap-4">
               <FiSearch size={24} />
               <input
                 type="text"
