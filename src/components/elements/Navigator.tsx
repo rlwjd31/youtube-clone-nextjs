@@ -1,5 +1,6 @@
 "use client";
 
+import PlayList from "@/components/elements/PlayList";
 import { dummyPlaylistArray } from "@/lib/dummyData";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -73,9 +74,11 @@ export default function Navigator() {
         </div>
       </section>
       <section>
-        {dummyPlaylistArray.map((playList) => (
-          <div key={playList.id}>{playList.owner}</div>
-        ))}
+        <ul className="flex flex-col">
+          {dummyPlaylistArray.map((playList) => (
+            <PlayList key={playList.id} playlist={playList} />
+          ))}
+        </ul>
       </section>
     </>
   );
