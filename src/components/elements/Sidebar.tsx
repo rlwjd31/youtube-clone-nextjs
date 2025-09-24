@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export default function Sidebar({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-full">
-      <nav className="w-[240px] border-r border-neutral-600">
+      <nav className="hidden lg:block w-[240px] border-r border-neutral-600">
         <div className="p-6">
           <Logo />
         </div>

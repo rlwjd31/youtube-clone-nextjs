@@ -1,9 +1,37 @@
+"use client";
+
 import PagePadding from "@/components/PagePadding";
 import UserIcon from "@/components/UserIcon";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { FaChromecast } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import Logo from "@/components/elements/Logo";
+import Navigator from "@/components/elements/Navigator";
+
+function HeaderDrawer({ children }: { children: ReactNode }) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  return (
+    <Drawer
+      direction="left"
+      open={isDrawerOpen}
+      onOpenChange={() => setIsDrawerOpen(true)}
+    >
+      <DrawerTrigger>{children}</DrawerTrigger>
+      <DrawerContent className="w-[240px] h-full">
+        <div className="py-3">
+          <div className="px-3">
+            <Logo isInDrawer onClickClose={() => setIsDrawerOpen(false)} />
+          </div>
+          <Navigator />
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+}
 
 export default function Header({ children }: { children: ReactNode }) {
   return (
@@ -22,7 +50,7 @@ export default function Header({ children }: { children: ReactNode }) {
       <section className="sticky top-0">
         <PagePadding>
           <div className="flex justify-between items-center">
-            <article className="flex items-center h-12 min-w-[480px] bg-black/15 rounded-2xl px-4 gap-4">
+            <article className="items-center h-12 min-w-[480px] hidden lg:flex bg-black/15 rounded-2xl px-4 gap-4">
               <FiSearch size={24} />
               <input
                 type="text"
@@ -30,6 +58,11 @@ export default function Header({ children }: { children: ReactNode }) {
                 placeholder="노래, 앨범, 아티스트, 팟캐스트 검색"
               />
             </article>
+            <HeaderDrawer>
+              <article className="lg:hidden">
+                <Logo />
+              </article>
+            </HeaderDrawer>
             <article className="flex gap-6 items-center">
               <FaChromecast size={26} />
               <UserIcon />
