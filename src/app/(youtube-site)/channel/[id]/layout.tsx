@@ -3,6 +3,5 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  await (3000);
   return <div>{children}</div>;
 }
