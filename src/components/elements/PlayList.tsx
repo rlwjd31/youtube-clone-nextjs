@@ -6,7 +6,7 @@ type Props = {
 };
 
 export default function PlayList({ playlist }: Props) {
-  const { id, owner, playlistName, songList } = playlist;
+  const { owner, playlistName } = playlist;
 
   const onClickPlayList = () => {};
 
