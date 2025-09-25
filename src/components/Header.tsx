@@ -11,6 +11,7 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import Logo from "@/components/elements/Logo";
 import Navigator from "@/components/elements/Navigator";
 import { cn } from "@/lib/utils";
+import useUIState from "@/hooks/useUIState";
 
 function HeaderDrawer({ children }: { children: ReactNode }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -38,6 +39,7 @@ export default function Header({ children }: { children: ReactNode }) {
   // Track scroll via console for now; add state when needed
   const [isScrolling, setIsScrolling] = useState(false);
   const headRef = useRef<HTMLHeadElement | null>(null);
+  const { headerImageSrc } = useUIState();
 
   useEffect(() => {
     const element = headRef.current;
@@ -60,7 +62,10 @@ export default function Header({ children }: { children: ReactNode }) {
         <div className="relative h-[400px] w-full">
           <Image
             fill
-            src="https://images.unsplash.com/photo-1569715442753-2eef87d75db3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={
+              headerImageSrc ||
+              "https://images.unsplash.com/photo-1569715442753-2eef87d75db3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
             alt="unsplash"
             className="object-cover"
           />
@@ -95,7 +100,7 @@ export default function Header({ children }: { children: ReactNode }) {
           </div>
         </PagePadding>
       </section>
-      <section className="absolute bg-black text-white">{children}</section>
+      <section className="absolute">{children}</section>
     </header>
   );
 }

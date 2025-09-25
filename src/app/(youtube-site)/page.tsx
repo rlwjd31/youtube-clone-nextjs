@@ -1,11 +1,15 @@
+import Category from "@/app/(youtube-site)/components/Category";
+import PagePadding from "@/components/PagePadding";
+
 export default async function Home() {
   return (
-    <div>
-      Home Page
-      <div className="h-[500px] bg-neutral-200"></div>
-      <div className="h-[500px] bg-neutral-200"></div>
-      <div className="h-[500px] bg-neutral-200"></div>
-      <div className="h-[500px] bg-neutral-200"></div>
-    </div>
+    <PagePadding>
+      <div className="min-h-[600px]">
+        <div className="mt-9">
+          <Category />
+          <div className="mt-12"></div>
+        </div>
+      </div>
+    </PagePadding>
   );
 }
