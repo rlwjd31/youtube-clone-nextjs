@@ -15,7 +15,7 @@ type SongCardProps = {
 };
 
 export default function SongCard({ song }: SongCardProps) {
-  const { channel, channelId, imageSrc, name, prevRank, rank, src } = song;
+  const { imageSrc, name, prevRank, rank } = song;
   return (
     <article className="relative group flex gap-4 items-center h-12 min-w-96 cursor-pointer">
       <div className="size-12 relative bg-red-600 shrink-0">
