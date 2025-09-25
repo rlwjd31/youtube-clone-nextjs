@@ -18,7 +18,7 @@ export default function SongCard({ song }: SongCardProps) {
   const { imageSrc, name, prevRank, rank } = song;
   return (
     <article className="relative group flex gap-4 items-center h-12 min-w-96 cursor-pointer">
-      <div className="size-12 relative bg-red-600 shrink-0">
+      <div className="size-12 relative shrink-0">
         <Image src={imageSrc} alt={name} fill className="object-cover" />
         <section className="absolute top-0 hidden group-hover:flex bg-black/40 cursor-pointer size-12 items-center justify-center">
           <FiPlayCircle size={20} />

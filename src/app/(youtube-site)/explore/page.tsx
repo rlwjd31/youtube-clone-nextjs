@@ -1,8 +1,13 @@
 import Category from "@/app/(youtube-site)/explore/components/Category";
+import GenreListCarousel from "@/components/GenreListCarousel";
 import PagePadding from "@/components/PagePadding";
 import PlayListCarousel from "@/components/PlayListCarousel";
 import SongListCarousel from "@/components/SongListCarousel";
-import { getAllPlaylist, getSongListTop10 } from "@/lib/dummyData";
+import {
+  dummyGenreList,
+  getAllPlaylist,
+  getSongListTop10,
+} from "@/lib/dummyData";
 import { PlayList } from "@/types";
 
 const page = async () => {
@@ -19,14 +24,12 @@ const page = async () => {
       <PlayListCarousel
         playlistArray={playlistArray as PlayList[]}
         title="새 앨범 및 싱글"
-        subTitle="새로운 앨범"
       />
       <div className="mt-20" />
-      <SongListCarousel
-        songListTop10={songlistTop10}
-        title="인기곡"
-        subTitle="새로운 앨범"
-      />
+      <SongListCarousel songListTop10={songlistTop10} title="인기곡" />
+      <div className="mt-20" />
+      <GenreListCarousel genreList={dummyGenreList} title="분위기 및 장르" />
+      <div className="mt-96" />
     </PagePadding>
   );
 };
