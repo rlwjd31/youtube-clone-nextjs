@@ -100,7 +100,7 @@ export default function Header({ children }: { children: ReactNode }) {
           </div>
         </PagePadding>
       </section>
-      <section className="absolute">{children}</section>
+      <section className="absolute w-full">{children}</section>
     </header>
   );
 }
