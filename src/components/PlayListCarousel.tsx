@@ -1,3 +1,4 @@
+import PlayListCard from "@/components/PlayListCard";
 import {
   Carousel,
   CarouselContent,
@@ -40,10 +41,13 @@ export default function PlayListCarousel({
           </div>
         </div>
       </div>
-      <CarouselContent>
+      <CarouselContent className="mt-4">
         {playlistArray.map((playlist, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">{playlist.playlistName}</div>
+          <CarouselItem
+            key={index}
+            className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
+          >
+            <PlayListCard playlist={playlist} />
           </CarouselItem>
         ))}
       </CarouselContent>
