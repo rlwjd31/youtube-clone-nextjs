@@ -32,15 +32,14 @@ export default function PlayListCard({ playlist }: PlayListCardProps) {
         />
         <div className="relative h-full hidden group-hover:block bg-gradient-to-b from-black/80 top-0 w-full">
           <div className="absolute right-4 top-4">
-            <IconButton Icon={MdMoreVert} size={20} />
+            <IconButton icon={<MdMoreVert size={20} />} />
           </div>
           <div
             className="flex justify-center size-[45px] items-center absolute bottom-4 right-4 transform-gpu transition-transform hover:scale-110 hover:bg-black bg-black/80 rounded-full pl-[2px]"
             onClick={onClickPlayList}
           >
             <IconButton
-              Icon={FiPlay}
-              size={24}
+              icon={<FiPlay size={24} />}
               className="hover:bg-transparent"
             />
           </div>

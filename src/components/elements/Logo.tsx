@@ -20,9 +20,11 @@ export default function Logo({
 
   return (
     <section className="flex items-center gap-3">
-      {isInDrawer && <IconButton Icon={IoClose} onClickIcon={onClickClose} />}
+      {isInDrawer && (
+        <IconButton icon={<IoClose />} onClickIcon={onClickClose} />
+      )}
       {!isInDrawer && (
-        <IconButton Icon={RxHamburgerMenu} onClickIcon={onClickMenu} />
+        <IconButton icon={<RxHamburgerMenu />} onClickIcon={onClickMenu} />
       )}
       <div className="cursor-pointer" onClick={onClickLogo}>
         <Image src="/main-logo.svg" alt="logo" width={100} height={30}></Image>

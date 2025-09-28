@@ -1,25 +1,29 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { ReactElement } from "react";
 import { IconType } from "react-icons";
 
-type Props = {
-  Icon: IconType;
+type IconButtonProps<T extends IconType> = {
+  icon: ReactElement<T>;
   onClickIcon?: () => void;
-  size?: number;
   className?: string;
 };
 
-export default function IconButton({
-  Icon,
+export default function IconButton<T extends IconType>({
+  icon,
   onClickIcon = () => {},
-  size = 24,
   className,
-}: Props) {
+}: IconButtonProps<T>) {
   return (
     <div
-      className={cn("flex justify-center items-center size-9 hover:bg-white/20 rounded-full cursor-pointer", className)}
+      className={cn(
+        "flex justify-center items-center size-9 hover:bg-white/20 rounded-full cursor-pointer",
+        className
+      )}
       onClick={onClickIcon}
     >
-      <Icon size={size} />
+      {icon}
     </div>
   );
 }

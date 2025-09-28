@@ -1,5 +1,3 @@
-"use client";
-
 import { TopSong } from "@/types";
 import Image from "next/image";
 import { FaCircle } from "react-icons/fa";
@@ -40,9 +38,9 @@ export default function SongCard({ song }: SongCardProps) {
         <div>{name}</div>
       </div>
       <section className="w-3/2 bg-black  flex absolute items-center right-12 h-12">
-        <IconButton Icon={FiThumbsUp} size={20} />
-        <IconButton Icon={FiThumbsDown} size={20} />
-        <IconButton Icon={FiMoreVertical} size={20} />
+        <IconButton icon={<FiThumbsUp size={20} />} />
+        <IconButton icon={<FiThumbsDown size={20} />} />
+        <IconButton icon={<FiMoreVertical size={20} />} />
       </section>
     </article>
   );
