@@ -1,4 +1,10 @@
-const page = async () => {
-  return <div>Channel Id</div>;
+type PageProps = {
+  params: {
+    id: string;
+  };
 };
-export default page;
+
+export default function Page({ params }: PageProps) {
+  const { id } = params;
+  return <div>channel id={id}</div>;
+}

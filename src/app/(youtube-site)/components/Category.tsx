@@ -7,8 +7,6 @@ import { cn } from "@/lib/utils";
 export default function Category() {
   const { category: homeCategory, setCategory: setHomeCategory, setHeaderImageSrc } = useUIState();
 
-  console.log("homeCategory", homeCategory);
-
   const onClickCategory = (category: { label: string; src: string }) => {
     if (homeCategory === category.label) {
       setHeaderImageSrc("");

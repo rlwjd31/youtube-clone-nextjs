@@ -36,7 +36,6 @@ function HeaderDrawer({ children }: { children: ReactNode }) {
 }
 
 export default function Header({ children }: { children: ReactNode }) {
-  // Track scroll via console for now; add state when needed
   const [isScrolling, setIsScrolling] = useState(false);
   const headRef = useRef<HTMLHeadElement | null>(null);
   const { headerImageSrc } = useUIState();
@@ -47,7 +46,6 @@ export default function Header({ children }: { children: ReactNode }) {
 
     const handleScroll = () => {
       const scrollValue = element.scrollTop;
-      console.log("scrollValue", scrollValue);
       setIsScrolling(scrollValue > 30);
     };
 
