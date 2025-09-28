@@ -3,7 +3,7 @@ import { ComponentProps, ReactElement } from "react";
 import { IconType } from "react-icons";
 
 type WhiteButtonProps<T extends IconType> = {
-  icon: ReactElement<T>;
+  icon?: ReactElement<T>;
   label: string;
   className?: string;
   props?: ComponentProps<"div">;
@@ -12,7 +12,7 @@ type WhiteButtonProps<T extends IconType> = {
 export default function WhiteButton<T extends IconType>({
   icon,
   label,
-  className,
+  className = "",
   ...props
 }: WhiteButtonProps<T>) {
   return (
@@ -23,7 +23,7 @@ export default function WhiteButton<T extends IconType>({
       )}
       {...props}
     >
-      <span>{icon}</span>
+      {icon && <span>{icon}</span>}
       <span>{label}</span>
     </div>
   );

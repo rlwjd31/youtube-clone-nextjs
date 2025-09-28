@@ -10,16 +10,16 @@ import { PlayList } from "@/types";
 import React, { ReactNode } from "react";
 
 type PlayListCarouselProps = {
-  title: string;
+  title?: string;
   subTitle?: string;
   Thumbnail?: ReactNode;
   playlistArray: PlayList[];
 };
 
 export default function PlayListCarousel({
-  title,
-  subTitle,
-  Thumbnail,
+  title = "",
+  subTitle = "",
+  Thumbnail = null,
   playlistArray,
 }: PlayListCarouselProps) {
   return (

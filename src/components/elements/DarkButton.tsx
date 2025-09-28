@@ -3,8 +3,8 @@ import { ComponentProps, ReactElement } from "react";
 import { IconType } from "react-icons";
 
 type DarkButtonProps<T extends IconType> = {
-  icon: ReactElement<T>;
-  label: string;
+  icon?: ReactElement<T>;
+  label?: string;
   className?: string;
   props?: ComponentProps<"div">;
 };
@@ -23,7 +23,7 @@ export default function DarkButton<T extends IconType>({
       )}
       {...props}
     >
-      <span>{icon}</span>
+      {icon && <span>{icon}</span>}
       <span>{label}</span>
     </div>
   );
