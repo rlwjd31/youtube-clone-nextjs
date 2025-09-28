@@ -1,4 +1,4 @@
-import { PlayList, TopSong } from "@/types";
+import { PlayList, TopSong, Channel, Song } from "@/types";
 import { getRandomInt } from "./utils";
 
 export const dummyAllSongList = [
@@ -102,8 +102,8 @@ export const dummyAllSongList = [
   },
 ];
 
-export const getSongsBychannel = (channel: string) => {
-  return dummyAllSongList.filter((song) => song.channel === channel);
+export const getSongsBychannel = (channel: string): Song[] => {
+  return dummyAllSongList.filter((song) => song.channel === channel) as Song[];
 };
 
 // playlist
@@ -168,7 +168,7 @@ export const getSongListTop10 = async (): Promise<TopSong[]> =>
   });
 
 // channel
-export const dummyChannelList = [
+export const dummyChannelList: Channel[] = [
   {
     id: 1,
     subscribers: 4200,
@@ -212,8 +212,10 @@ export const dummyChannelList = [
   },
 ];
 
-export const getChannelById = async (id: number) => {
-  return dummyChannelList.filter((channel) => channel.id === id)?.[0];
+export const getChannelById = async (id: number): Promise<Channel> => {
+  return dummyChannelList.filter(
+    (channel) => channel.id === id
+  )?.[0] as Channel;
 };
 
 // home - 카테고리
