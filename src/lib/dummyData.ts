@@ -1,4 +1,4 @@
-import { TopSong } from "@/types";
+import { PlayList, TopSong } from "@/types";
 import { getRandomInt } from "./utils";
 
 export const dummyAllSongList = [
@@ -150,8 +150,12 @@ export const getPlaylistByOwner = (owner: string) => {
   return dummyPlaylistArray.filter((playlist) => playlist.owner === owner);
 };
 
-export const getPlaylistById = async (id: number) => {
-  return dummyPlaylistArray.filter((playlist) => playlist.id === id)?.[0];
+export const getPlaylistById = async (
+  id: number
+): Promise<PlayList | undefined> => {
+  return dummyPlaylistArray.filter(
+    (playlist) => playlist.id === id
+  )?.[0] as PlayList;
 };
 
 export const getSongListTop10 = async (): Promise<TopSong[]> =>
