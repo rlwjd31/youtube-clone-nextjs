@@ -1,4 +1,5 @@
 import HeaderBgChanger from "@/components/HeaderBgChanger";
+import PlayListHead from "@/components/PlayListHead";
 import { getPlaylistById } from "@/lib/dummyData";
 import { getRandomElementFromArray } from "@/lib/utils";
 import { redirect } from "next/navigation";
@@ -20,6 +21,7 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <div className="relative h-screen">
       <HeaderBgChanger imageSrc={randomImgSrc} />
+      <PlayListHead playlist={playlist} />
     </div>
   );
 }
